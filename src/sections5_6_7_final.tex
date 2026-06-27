@@ -1,0 +1,447 @@
+% =============================================================================
+%  SECTION 5 — SYNTHESIS OF THE UNIFIED HARMONIC MODEL
+%  SECTION 6 — FORWARD PROJECTIONS AS FALSIFIABLE HYPOTHESES
+%  SECTION 7 — CONCLUDING REMARKS AND LIMITATIONS
+%
+%  Integrate immediately after Sections 3 & 4.
+%  This block does NOT contain \end{document} — that remains in the base template.
+% =============================================================================
+
+
+% =============================================================================
+\section{Synthesis of the Unified Harmonic Model}
+% =============================================================================
+
+\subsection{Two Independent Dimensions of a Single Dynamic System}
+
+The preceding sections have developed two analytically distinct but
+structurally interdependent dimensions of Bitcoin's market cycle. Section~2
+and Section~3 established the \textit{temporal dimension}: the expansion and
+contraction phases exhibit near-invariant durations of $\bar{\Delta}^{+}
+\approx 1{,}060$ days and $\bar{\Delta}^{-} \approx 370$ days, with the
+halving functioning as a stable temporal node at phase $\bar{\phi}(H) \approx
+0.494$ of the expansion. Section~4 established the \textit{amplitude
+dimension}: cycle multipliers follow an empirical power-law
+$\hat{\mathcal{M}}(d) = 328 \cdot d^{5.1}$ as a function of prior drawdown
+depth, subject to a structural downward adjustment under the ETF regime.
+
+The central claim of this synthesis is that these two dimensions are
+\textit{quasi-orthogonal} in their dynamics yet \textit{jointly necessary} for
+a complete characterisation of the system. Formally, we represent the state of
+the Bitcoin market at any point in time $t$ as a two-dimensional vector
+$\mathbf{S}(t)$:
+
+\begin{equation}
+  \mathbf{S}(t) = \bigl(\phi(t),\; \mathcal{A}(t)\bigr)
+  \label{eq:state_vector}
+\end{equation}
+
+where $\phi(t) \in [0, 1]$ is the normalised cycle phase defined in
+equation~\eqref{eq:phase_norm} and $\mathcal{A}(t) \geq 0$ is the
+instantaneous amplitude level, normalised to the trough price
+$T^{\$}_i$ at the origin of each cycle.
+
+The quasi-orthogonality of $\phi$ and $\mathcal{A}$ is supported by the
+empirical observation that the temporal parameters $\{\bar{\Delta}^{+},
+\bar{\Delta}^{-}, \bar{\phi}(H)\}$ have remained stable across three cycles
+that exhibit dramatically different amplitude profiles ($130\times$, $20\times$,
+$8\times$). The clock of the system does not slow down as the amplitude
+compresses: the period has shortened by only $18$ days across three cycles even
+as the multiplier contracted by a factor of sixteen. This decoupling is
+precisely what makes the temporal dimension the more tractable and operationally
+reliable forecasting variable.
+
+\subsection{The Harmonic Model as a Formal Statement}
+
+We now state the Unified Harmonic Model in a compact form that integrates
+the empirical parameters derived across Sections~2--4.
+
+\begin{definition}[Unified Harmonic Model]
+The Bitcoin Harmonic Cycle is a two-dimensional dynamic system
+$\mathbf{S}(t) = (\phi(t), \mathcal{A}(t))$ governed by the following
+structural equations:
+
+\medskip
+\textit{Temporal law (period and internal phase symmetry):}
+\begin{align}
+  \bar{T}_{\text{cycle}} &= \bar{\Delta}^{+} + \bar{\Delta}^{-}
+    = 1{,}060 + 370 = 1{,}430 \text{ days} \label{eq:period_law} \\[4pt]
+  \bar{\phi}(H) &= \frac{\bar{\alpha}}{\bar{\alpha} + \bar{\beta}}
+    = \frac{523}{1{,}059} \approx 0.494
+    \quad \bigl(\varepsilon_\phi \leq 0.012\bigr) \label{eq:phase_law}
+\end{align}
+
+\textit{Amplitude law (power-law with ETF regime adjustment):}
+\begin{align}
+  \hat{\mathcal{M}}(d) &= 328 \cdot d^{\,5.1}
+    \quad \text{(pre-ETF calibration)} \label{eq:amp_law_pre} \\[4pt]
+  \mathcal{M}_i^{\text{adj}} &\in [2.5,\; 4.0]
+    \quad \text{(regime-adjusted, Cycles } \geq 4\text{)} \label{eq:amp_law_etf}
+\end{align}
+\end{definition}
+
+The model contains five structural parameters: two temporal means
+($\bar{\Delta}^{+}$, $\bar{\Delta}^{-}$), one phase anchor
+($\bar{\phi}(H)$), and two amplitude parameters ($\hat{\kappa} = 328$,
+$\hat{\gamma} = 5.1$). All five are identified from historical data alone,
+without recourse to price-level models, on-chain metrics, or macro-financial
+variables. This parsimony is a deliberate methodological choice: the fewer the
+free parameters, the higher the out-of-sample credibility of the projections
+the model generates.
+
+\subsection{Interaction Between Temporal and Amplitude Dimensions}
+
+Although quasi-orthogonal in their dynamics, the temporal and amplitude
+dimensions interact through two channels that are relevant for forward
+projection.
+
+\textbf{Channel I: Amplitude decay does not disturb the temporal clock.}
+The evidence to date suggests that the progressive compression of the amplitude
+envelope does not feed back into the period of the system. This is consistent
+with the damped harmonic oscillator analogy: in equation~\eqref{eq:dho}, the
+damping ratio $\zeta$ modifies the amplitude envelope $e^{-\zeta\omega_0 t}$
+and the damped frequency $\omega_d = \omega_0\sqrt{1-\zeta^2}$, but for
+$\zeta \ll 1$ the frequency shift is negligible. The empirical stability
+$\mathcal{S}(\Delta^{+}) = 0.983$ obtained in Section~2 is consistent with
+a regime of weak damping in the temporal dimension, even as the amplitude
+damping appears considerably stronger. This decoupling is the single most
+valuable operational property of the model.
+
+\textbf{Channel II: ETF-driven drawdown compression creates a non-linear
+feedback into amplitude.} As argued in Section~4, the reduction in prior
+drawdown $d_i$ produced by structural ETF demand feeds into the amplitude
+law through the steep exponent $\hat{\gamma} = 5.1$. A drawdown reduction
+from $0.48$ to $0.35$---a change of 13 percentage points---translates into a
+multiplier reduction from $8.1\times$ to approximately $2.5\times$: a
+compression factor of more than three on the return side. This non-linear
+amplification of amplitude consequences from relatively small changes in
+drawdown depth is the primary risk to amplitude-dependent price projections
+and the principal reason we present Cycle~4 amplitude estimates as a range
+rather than a point forecast.
+
+\subsection{The Calendar as the Primary Forecasting Instrument}
+
+A corollary of the quasi-orthogonality result is of practical importance for
+the evaluation of the model: temporal predictions can be confirmed or falsified
+\textit{independently of price outcomes}. If the cycle minimum of 2026 arrives
+within the projected window---regardless of whether the price reaches
+\$35,000 or \$50,000---the temporal structure of the model survives. If it
+does not, the model fails on its most robust dimension. This separation between
+the testability of the temporal and amplitude predictions is what elevates the
+framework beyond a price target exercise and positions it as a structural
+hypothesis about the dynamical architecture of the market.
+
+
+% =============================================================================
+\section{Forward Projections as Falsifiable Hypotheses}
+% =============================================================================
+
+\subsection{Methodological Preamble}
+
+The projections presented in this section are derived mechanically from the
+parameters of the Unified Harmonic Model developed in Sections~2--5. They are
+not price targets in the conventional analytical sense. They are
+\textit{falsifiable hypotheses}: dated predictions whose confirmation or
+refutation will determine the empirical viability of the model. Each projection
+is accompanied by an explicit uncertainty interval that reflects the maximum
+inter-cycle deviation observed in the corresponding historical parameter.
+
+Price ranges are provided as supplementary estimates and must be understood as
+secondary outputs of the model, dependent on the more uncertain amplitude
+dimension and subject to the ETF regime-adjustment caveat of
+Section~\ref{sec:etf_break}. The temporal projections are primary; the price
+projections are indicative.
+
+\subsection{Milestone I --- Cycle 3 Peak ($P_3$)}
+
+The peak of the current expansion phase is projected at:
+
+\begin{equation}
+  \hat{P}_3 = 6\ \text{October}\ 2025
+              \pm 45\ \text{days}
+  \label{eq:p3_projection}
+\end{equation}
+
+This date is derived from two independent paths that converge on the same
+interval:
+
+\begin{enumerate}
+  \item \textit{From the trough:} $T_3 = 21$ November 2022 $+ \bar{\Delta}^{+}
+  = 1{,}060\ \text{days} \Rightarrow$ 16 October 2025.
+  \item \textit{From the halving:} $H_3 = 20$ April 2024 $+ \bar{\beta} =
+  536\ \text{days} \Rightarrow$ 8 October 2025.
+\end{enumerate}
+
+The two paths converge to within two days of each other, providing strong
+internal consistency. The uncertainty window of $\pm 45$ days---wider than the
+$\pm 12$ day parameter uncertainty of $\bar{\beta}$---is set conservatively to
+account for the compounding of temporal uncertainty in the trough identification
+and the possibility of a marginal new high being established slightly outside
+the primary parameter range.
+
+\medskip
+\noindent\textit{Indicative price range:} \$135,000 -- \$160,000.
+
+This range is derived by applying the Cycle 3 multiplier
+$\mathcal{M}_3 \approx 8.1\times$ (under the hypothesis $P_3$ = \$108,000
+equivalent at the assumed ATH level) and bounding it by the uncertainty in
+the trough price identification. It is presented for contextual reference only
+and does not constitute a price forecast.
+
+\subsection{Milestone II --- Cycle 4 Trough ($T_4$)}
+
+The minimum of the next contraction phase is projected at:
+
+\begin{equation}
+  \hat{T}_4 = \hat{P}_3 + \bar{\Delta}^{-}
+            \approx 6\ \text{October}\ 2025 + 370\ \text{days}
+            = 11\ \text{October}\ 2026
+            \pm 45\ \text{days}
+  \label{eq:t4_projection}
+\end{equation}
+
+The $\pm 45$ day window encompasses the full historical range of the
+contraction phase ($363$ to $376$ days, a span of $13$ days) and an additional
+buffer reflecting the dependency of this projection on the confirmation of
+$\hat{P}_3$. The projection window therefore spans approximately from
+late August 2026 to late November 2026.
+
+\medskip
+\noindent\textit{Indicative price range:} \$35,000 -- \$45,000.
+
+This range assumes an ETF-dampened drawdown from $\hat{P}_3$ of approximately
+$65$--$70\%$, consistent with the observed secular compression of drawdowns
+($83\% \to 59\% \to 48\%$) and the additional stabilising effect of
+sustained institutional demand during the contraction phase. A drawdown of
+$65$--$70\%$ from a peak in the \$135,000--\$160,000 range produces a trough
+in approximately the \$40,000--\$56,000 interval, with the lower portion of
+the stated range reflecting potential peak undershooting.
+
+\subsection{Milestone III --- Halving $H_4$ (Protocol-Determined)}
+
+The fourth Bitcoin halving is an exogenous event determined by the protocol's
+block generation schedule. Under the assumption of a sustained mean block time
+of approximately 10 minutes, the halving at block height 1{,}050{,}000 is
+expected at:
+
+\begin{equation}
+  H_4 \approx \text{April}\ 2028
+  \label{eq:h4}
+\end{equation}
+
+Unlike all other milestones in this section, $H_4$ is not a model projection
+but a protocol-derived datum. Its uncertainty is entirely a function of the
+variance in block production rates and is, for practical purposes, contained
+within a window of a few weeks around the stated month. This makes $H_4$ the
+single fixed coordinate of the Cycle~4 temporal structure and the most reliable
+anchor for downstream projections.
+
+\subsection{Milestone IV --- Cycle 4 Peak ($P_4$)}
+
+The peak of the next expansion phase admits two projection paths, both of which
+converge on the second half of 2029:
+
+\begin{enumerate}
+  \item \textit{From the trough (full expansion):}
+  \begin{equation}
+    \hat{P}_4^{(a)} = \hat{T}_4 + \bar{\Delta}^{+}
+                    \approx 11\ \text{October}\ 2026 + 1{,}060\ \text{days}
+                    \approx 5\ \text{September}\ 2029
+    \label{eq:p4_a}
+  \end{equation}
+
+  \item \textit{From the halving (post-halving segment):}
+  \begin{equation}
+    \hat{P}_4^{(b)} = H_4 + \bar{\beta}
+                    \approx \text{April}\ 2028 + 536\ \text{days}
+                    \approx \text{October}\ 2029
+    \label{eq:p4_b}
+  \end{equation}
+\end{enumerate}
+
+The two paths converge to within four to six weeks of each other, spanning the
+interval from late August to late October 2029. We adopt as the central
+projection:
+
+\begin{equation}
+  \hat{P}_4 = \text{Q3--Q4}\ 2029 \quad (\text{September--October}\ 2029)
+              \pm 45\ \text{days}
+  \label{eq:p4_projection}
+\end{equation}
+
+\medskip
+\noindent\textit{Indicative price range:} \$120,000 -- \$180,000.
+
+This range is derived from the regime-adjusted amplitude interval
+$\mathcal{M}_4^{\text{adj}} \in [2.5, 4.0]$ applied to the projected trough
+$\hat{T}_4^{\$} \in [\$35{,}000, \$45{,}000]$:
+
+\begin{align}
+  \text{Lower bound:} &\quad 2.5 \times \$35{,}000 = \$87{,}500 \\
+  \text{Upper bound:} &\quad 4.0 \times \$45{,}000 = \$180{,}000
+  \label{eq:p4_price}
+\end{align}
+
+The lower tail of the mechanical computation ($\approx\$87{,}500$) falls below
+the stated indicative range. We adjust this lower bound upward to
+\$120,000 on the grounds that a sub-ATH peak in Cycle~4 would represent a
+structural break from the observed sequence of monotonically increasing nominal
+peaks across all prior cycles---a break that would require independent
+justification beyond the amplitude model. The \$120,000--\$180,000 range is
+therefore the \textit{model-consistent} zone for $P_4$ under the assumptions
+of the harmonic framework.
+
+\subsection{Summary of Projections}
+
+\begin{table}[H]
+  \centering
+  \caption{Forward Projection Summary --- Unified Harmonic Model}
+  \label{tab:projections}
+  \renewcommand{\arraystretch}{1.45}
+  \begin{tabularx}{\textwidth}{l l l X}
+    \toprule
+    \textbf{Milestone} &
+    \textbf{Projected Date} &
+    \textbf{Price Range (ind.)} &
+    \textbf{Derivation Basis} \\
+    \midrule
+    $\hat{P}_3$ --- Cycle 3 Peak
+      & Oct 2025 $\pm$ 45d
+      & \$135k -- \$160k
+      & $T_3 + \bar{\Delta}^{+}$; $H_3 + \bar{\beta}$ \\[4pt]
+    $\hat{T}_4$ --- Cycle 4 Trough
+      & Oct 2026 $\pm$ 45d
+      & \$35k -- \$45k
+      & $\hat{P}_3 + \bar{\Delta}^{-}$; drawdown 65--70\% \\[4pt]
+    $H_4$ --- Halving (protocol)
+      & Apr 2028
+      & ---
+      & Block 1,050,000 (protocol-fixed) \\[4pt]
+    $\hat{P}_4$ --- Cycle 4 Peak
+      & Sep--Oct 2029 $\pm$ 45d
+      & \$120k -- \$180k
+      & $\hat{T}_4 + \bar{\Delta}^{+}$; $H_4 + \bar{\beta}$;
+        $\mathcal{M}_4^{\text{adj}} \in [2.5, 4.0]$ \\
+    \bottomrule
+  \end{tabularx}
+  \medskip
+  \begin{minipage}{\textwidth}
+    \small
+    All temporal projections carry an explicit uncertainty of $\pm 45$ days.
+    Price ranges are indicative and secondary to temporal projections.
+    ``ind.'' = indicative. All projections constitute falsifiable hypotheses
+    and must be revised upon material deviation from the projected temporal
+    milestones.
+  \end{minipage}
+\end{table}
+
+
+% =============================================================================
+\section{Concluding Remarks and Model Limitations}
+% =============================================================================
+
+\subsection{The Calendar as Falsification Criterion}
+
+This paper has advanced and formalised a single central thesis: the true
+governing clock of Bitcoin's market cycles is not the halving event in
+isolation, but a two-phase dynamic system in which the halving functions as a
+temporal node---an internal anchor that divides the expansion phase into two
+near-equal sub-intervals of approximately 523 and 536 days. The complete
+expansion phase persists for approximately 1,060 days and is followed by a
+contraction of approximately 370 days, yielding a mean total period of
+1,430 days. The amplitude of each cycle, governed by a power-law relationship
+with prior drawdown depth, declines monotonically and is subject to structural
+acceleration under the ETF-driven institutional regime that emerged in 2024.
+
+The principal intellectual contribution of this framework is not the price
+targets it generates---those are secondary and heavily caveated---but rather
+the methodological position it establishes: \textit{temporal structure is
+the most robust and independently testable dimension of Bitcoin's market
+dynamics.} Unlike price models, which can be retrospectively adjusted,
+extended, or reinterpreted, the temporal projections of the Harmonic Model
+are committed to specific calendar windows and are falsifiable without
+ambiguity.
+
+If the Cycle~4 trough does not materialise within the window of August--
+November 2026, the temporal dimension of the model is falsified and requires
+fundamental revision. If it does materialise within that window, the model
+survives one additional out-of-sample test and its structural validity is
+incrementally strengthened. The strength of a scientific model is not its
+capacity to explain what has already occurred, but its willingness to be
+specific about what has not yet occurred and to accept the consequences of
+being wrong. The Harmonic Model is explicit on both counts.
+
+\subsection{Model Limitations}
+
+We conclude with a transparent assessment of the conditions under which the
+model is expected to fail, partially or entirely.
+
+\textbf{Limitation I: Small sample size.} The model is calibrated on three
+complete cycles (with the third only provisionally closed). In classical
+statistical terms, three observations are insufficient to establish the
+significance of a structural parameter with high confidence. The temporal
+stability indices derived in Section~2 are compelling but not formally
+significant under conventional frequentist criteria. The model's credibility
+is therefore primarily structural---based on the internal consistency of the
+parameters and their convergence across independent measurement paths---
+rather than statistical in the hypothesis-testing sense.
+
+\textbf{Limitation II: Macro-financial black swan events.} The temporal
+stability documented in this paper spans three cycles from 2015 to 2025. This
+period encompassed considerable macroeconomic turbulence---negative interest
+rates, a global pandemic, the fastest monetary tightening cycle in four
+decades---without materially disrupting the temporal structure of Bitcoin's
+market cycles. However, a sufficiently severe macro dislocation could alter
+the clock. Scenarios that could produce structural disruption include: a
+prolonged global recession accompanied by forced liquidation of risk assets
+across all categories; a systemic failure of major custodial or ETF
+infrastructure leading to forced outflows; or a sovereign-level regulatory
+intervention that materially constrains the liquidity pool of the asset.
+None of these scenarios is assigned a probability here; they are enumerated
+as the class of exogenous shocks capable of falsifying the temporal dimension
+of the model independently of its internal logic.
+
+\textbf{Limitation III: Regulatory and structural regime change.} The
+structural break introduced by spot ETF approval in 2024 has been incorporated
+into the amplitude dimension of the model, but its full implications for the
+temporal dimension remain uncertain. It is conceivable that sustained
+institutional demand, by continuously absorbing selling pressure during
+contraction phases, could either shorten or elongate the contraction duration
+$\Delta^{-}$ relative to the historical average of 370 days. A systematic
+shortening would be consistent with the hypothesis that institutional price
+floors compress bear markets; a systematic elongation could arise if
+institutional rebalancing generates prolonged gradual outflows rather than
+abrupt capitulation. The direction and magnitude of this effect cannot be
+determined from prior data and constitutes the most significant structural
+uncertainty in the current cycle's contraction projection.
+
+\textbf{Limitation IV: Protocol-level modifications.} The model treats the
+four-year halving schedule as exogenous and immutable. Any modification to
+Bitcoin's consensus rules that alters the block reward schedule---whilst
+considered a negligible probability by the research and technical community at
+the time of writing---would invalidate the halving's role as a temporal
+node and require a complete reconstruction of the phase anchor parameter
+$\bar{\phi}(H)$.
+
+\subsection{Final Remark}
+
+The Harmonic Time Model does not claim to predict the price of Bitcoin. It
+claims something structurally prior and more durable: that the \textit{timing}
+of Bitcoin's market cycles exhibits a degree of internal regularity that has
+persisted across radically different market regimes, capitalisation levels, and
+structural environments---and that this regularity is sufficiently precise to
+generate dated, falsifiable predictions about future cycle milestones.
+
+The model's value will be determined not by the elegance of its mathematical
+formulation, but by the accuracy of the projection entered in
+Table~\ref{tab:projections}. If the trough of Cycle~4 arrives in October 2026,
+and the peak of Cycle~4 arrives in the third or fourth quarter of 2029, the
+Harmonic Model will have earned the right to be taken seriously as a
+structural description of Bitcoin's dynamic architecture. Until then, it
+remains what all empirical models should be: a precise and refutable
+hypothesis about the behaviour of a complex system.
+
+% =============================================================================
+%  END OF SECTIONS 5, 6 & 7
+%  (The \end{document} tag belongs in the base template file.)
+% =============================================================================

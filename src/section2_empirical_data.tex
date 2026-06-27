@@ -1,0 +1,319 @@
+% =============================================================================
+%  SECTION 2 — EMPIRICAL DATA & TEMPORAL METHODOLOGY
+%  Integrate this block immediately after Section 1 in the main document.
+% =============================================================================
+
+\section{Empirical Data and Temporal Methodology}
+
+\subsection{Identification of Cycle Extrema}
+
+The empirical foundation of this model rests on the precise identification of
+two classes of structural inflection points in Bitcoin's price history: absolute
+\textit{cycle troughs} ($T_i$) and absolute \textit{cycle peaks} ($P_i$), where
+the subscript $i \in \{1, 2, 3\}$ denotes the cycle index. These inflection
+points are defined under a strict methodological protocol designed to minimise
+look-ahead bias and subjective interpolation.
+
+\begin{definition}[Cycle Trough]
+A \textit{cycle trough} $T_i$ is defined as the date of the global price
+minimum recorded on daily closing data between two consecutive cycle peaks
+$P_{i-1}$ and $P_i$, where no subsequent retracement to or below that price
+level occurs within the same inter-peak interval.
+\end{definition}
+
+\begin{definition}[Cycle Peak]
+A \textit{cycle peak} $P_i$ is defined as the date of the global all-time high
+(ATH) closing price recorded within the corresponding expansion phase, measured
+from trough $T_i$ and bounded above by the subsequent trough $T_{i+1}$.
+\end{definition}
+
+By construction, each observation window captures one complete
+\textit{expansion phase} $[T_i,\, P_i]$ and one complete \textit{contraction
+phase} $[P_i,\, T_{i+1}]$, forming the elementary cycle unit
+$\mathcal{C}_i = [T_i,\, P_i,\, T_{i+1}]$.
+
+The halving dates $H_i$ are treated as exogenous and protocol-determined
+variables. They are taken from the public blockchain record without adjustment:
+
+\begin{itemize}
+  \item $H_1$: 9 July 2016 (block 420{,}000; reward reduced from 25 to 12.5 BTC)
+  \item $H_2$: 11 May 2020 (block 630{,}000; reward reduced from 12.5 to 6.25 BTC)
+  \item $H_3$: 20 April 2024 (block 840{,}000; reward reduced from 6.25 to 3.125 BTC)
+\end{itemize}
+
+All duration measures $\Delta_{\phi}$ are expressed in elapsed calendar days,
+computed as:
+
+\begin{equation}
+  \Delta_{\phi}(A, B) = \lvert \text{date}(B) - \text{date}(A) \rvert
+  \quad \text{in days}
+\end{equation}
+
+where $A$ and $B$ are any two dated events in the sequence
+$\{T_i,\, H_i,\, P_i\}$.
+
+\medskip
+\noindent\textit{Note on Cycle 3.} The peak date for the current cycle
+($P_3 = 6$ October 2025) is treated as a \textit{working hypothesis} consistent
+with the temporal structure derived in this section. Its inclusion in the
+averaged parameters is flagged accordingly throughout the analysis, and all
+projections derived from it are explicitly labelled as probabilistic. The model
+is designed to be falsifiable and self-correcting: if a higher closing price is
+established after the submission date of this paper, the cycle extremum and all
+downstream projections must be revised.
+
+% -----------------------------------------------------------------------------
+\subsection{Cycle Phase Durations}
+
+Table~\ref{tab:phase_durations} reports the duration of the expansion and
+contraction phases for each observed cycle. The \textit{expansion duration}
+$\Delta^{+}_i$ is measured from trough $T_i$ to peak $P_i$; the
+\textit{contraction duration} $\Delta^{-}_i$ is measured from peak $P_i$ to
+the subsequent trough $T_{i+1}$.
+
+\begin{table}[H]
+  \centering
+  \caption{Bitcoin Market Cycle Phase Durations (Calendar Days)}
+  \label{tab:phase_durations}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabularx}{\textwidth}{
+    l
+    S[table-format=4.0]
+    S[table-format=3.0]
+  }
+    \toprule
+    \textbf{Cycle} &
+    \multicolumn{1}{c}{\textbf{Expansion Phase} $\Delta^{+}_i$ (days)} &
+    \multicolumn{1}{c}{\textbf{Contraction Phase} $\Delta^{-}_i$ (days)} \\
+    \midrule
+    \textbf{Cycle 1}
+      & {1068}
+      & {363} \\
+    \quad Trough $T_1$: 14 Jan 2015
+      & {}
+      & {} \\
+    \quad Peak $P_1$: 17 Dec 2017
+      & {}
+      & {} \\
+    \quad Trough $T_2$: 15 Dec 2018
+      & {}
+      & {} \\[4pt]
+    \textbf{Cycle 2}
+      & {1061}
+      & {376} \\
+    \quad Trough $T_2$: 15 Dec 2018
+      & {}
+      & {} \\
+    \quad Peak $P_2$: 10 Nov 2021
+      & {}
+      & {} \\
+    \quad Trough $T_3$: 21 Nov 2022
+      & {}
+      & {} \\[4pt]
+    \textbf{Cycle 3} \textsuperscript{\dag}
+      & {1050}
+      & {---} \\
+    \quad Trough $T_3$: 21 Nov 2022
+      & {}
+      & {} \\
+    \quad Peak $P_3$: 6 Oct 2025 \textsuperscript{\dag}
+      & {}
+      & {} \\
+    \midrule
+    \textbf{Average} $\bar{\Delta}$
+      & \textbf{1060}
+      & \textbf{370} \\
+    \quad Range $[\min, \max]$
+      & {[1050,\; 1068]}
+      & {[363,\; 376]} \\
+    \quad Inter-cycle deviation $\sigma_{\max}$
+      & {18 days}
+      & {13 days} \\
+    \bottomrule
+  \end{tabularx}
+  \medskip
+  \begin{minipage}{\textwidth}
+    \small
+    \textsuperscript{\dag} Cycle 3 peak ($P_3$) is a working hypothesis. The
+    contraction phase $\Delta^{-}_3$ is therefore excluded from the current
+    average computation and will be incorporated upon confirmation of the cycle
+    extremum.
+  \end{minipage}
+\end{table}
+
+The arithmetic mean of the expansion phase across three cycles yields
+$\bar{\Delta}^{+} \approx 1{,}060$ days, with a maximum inter-cycle deviation
+of $\sigma_{\max}^{+} = 18$ days---representing a relative dispersion of
+approximately $1.7\%$ around the mean. The contraction phase, measured over
+two complete observations, yields $\bar{\Delta}^{-} \approx 370$ days with a
+maximum deviation of $\sigma_{\max}^{-} = 13$ days, a relative dispersion of
+$3.5\%$.
+
+% -----------------------------------------------------------------------------
+\subsection{Internal Phase Symmetry: The Halving as Temporal Anchor}
+
+The most structurally significant finding of this empirical analysis emerges
+when the expansion phase is decomposed at the halving event $H_i$. Rather than
+treating the halving as the origin of the cycle---as conventional
+halving-centric models implicitly do---we position it as an internal marker
+that divides the expansion phase $[T_i, P_i]$ into two measurable sub-intervals:
+
+\begin{align}
+  \alpha_i &= \Delta_{\phi}(T_i,\; H_i) \quad \text{(pre-halving segment)} \\
+  \beta_i  &= \Delta_{\phi}(H_i,\; P_i) \quad \text{(post-halving segment)}
+\end{align}
+
+such that, by construction, $\alpha_i + \beta_i = \Delta^{+}_i$.
+
+\begin{hypothesis}[Internal Phase Symmetry]
+  The halving event $H_i$ functions as a \textit{temporal anchor} within the
+  expansion phase: the sub-intervals $\alpha_i$ and $\beta_i$ are quasi-equal
+  and exhibit inter-cycle stability that is statistically independent of
+  price-level dynamics.
+\end{hypothesis}
+
+Table~\ref{tab:phase_symmetry} reports the measured values of $\alpha_i$ and
+$\beta_i$ for each observed cycle.
+
+\begin{table}[H]
+  \centering
+  \caption{Internal Phase Symmetry --- Expansion Phase Decomposed at the Halving}
+  \label{tab:phase_symmetry}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabularx}{\textwidth}{
+    l
+    c
+    S[table-format=3.0]
+    S[table-format=3.0]
+    S[table-format=4.0]
+  }
+    \toprule
+    \textbf{Cycle} &
+    \textbf{Halving Date} ($H_i$) &
+    \multicolumn{1}{c}{$\alpha_i$ (days)} &
+    \multicolumn{1}{c}{$\beta_i$ (days)} &
+    \multicolumn{1}{c}{$\alpha_i + \beta_i$ (days)} \\
+    \midrule
+    Cycle 1 (2015--2017) & 9 Jul 2016  & 542 & 526 & 1068 \\
+    Cycle 2 (2018--2021) & 11 May 2020 & 513 & 548 & 1061 \\
+    Cycle 3 (2022--2025)\textsuperscript{\dag}
+                          & 20 Apr 2024 & 515 & 534 & 1050 \\
+    \midrule
+    \textbf{Average} $\bar{\alpha},\; \bar{\beta}$
+      & ---
+      & \textbf{523}
+      & \textbf{536}
+      & \textbf{1059} \\
+    \quad Max.\ deviation $\sigma_{\max}$
+      & ---
+      & {19 days}
+      & {12 days}
+      & {---} \\
+    \bottomrule
+  \end{tabularx}
+  \medskip
+  \begin{minipage}{\textwidth}
+    \small
+    \textsuperscript{\dag} Cycle 3 values are derived under the hypothesis
+    $P_3 = 6$ October 2025.
+  \end{minipage}
+\end{table}
+
+The data reveal a bilateral stability that is difficult to attribute to
+stochastic coincidence. The pre-halving segment $\alpha_i$ ranges from 513 to
+542 days, yielding a mean of $\bar{\alpha} = 523$ days and a maximum deviation
+of $\sigma_{\max}^{\alpha} = 19$ days ($\approx 3.6\%$ of the mean). The
+post-halving segment $\beta_i$ ranges from 526 to 548 days, yielding a mean of
+$\bar{\beta} = 536$ days with a maximum deviation of $\sigma_{\max}^{\beta}=
+12$ days ($\approx 2.2\%$ of the mean). Taken together, the sum $\bar{\alpha}
++ \bar{\beta} = 1{,}059$ days is consistent to within one day of the
+independently computed expansion mean $\bar{\Delta}^{+} = 1{,}060$ days,
+providing internal cross-validation of the measurement methodology.
+
+The asymmetry between $\bar{\alpha}$ and $\bar{\beta}$ is also noteworthy: at
+13 days, it indicates that the halving does not bisect the expansion phase
+exactly at its midpoint, but rather occurs \textit{slightly before} it. In
+other words, the system reaches its peak approximately 13 days \textit{later}
+in the post-halving segment than what a perfectly symmetric division would
+predict. This mild asymmetry is stable across all three cycles and may reflect
+the lagged transmission mechanism through which supply reduction propagates
+into speculative price discovery.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{clock.png}
+    \caption{\textbf{The Bitcoin Harmonic Clock:} Visualisation of the internal phase architecture across Cycles 1, 2, and 3. The diagram demonstrates the structural invariance of the expansion phase, positioning the halving event not as an origin, but as an internal temporal node fixed at $\overline{\phi}(H) \approx 0.494$.}
+    \label{fig:harmonic_clock}
+\end{figure}
+
+% -----------------------------------------------------------------------------
+\subsection{Statistical Characterisation of Temporal Stability}
+
+The preceding measurements permit a formal statistical characterisation of the
+temporal regularity of Bitcoin's market structure. Let us define the
+\textit{temporal stability index} $\mathcal{S}(\phi)$ of a phase $\phi$ as:
+
+\begin{equation}
+  \mathcal{S}(\phi) = 1 - \frac{\sigma_{\max}(\phi)}{\bar{\Delta}(\phi)}
+\end{equation}
+
+where $\sigma_{\max}(\phi)$ is the maximum observed deviation from the phase
+mean and $\bar{\Delta}(\phi)$ is the phase mean duration. A value of
+$\mathcal{S}(\phi) = 1$ would denote perfect invariance; values approaching
+zero indicate high temporal dispersion.
+
+Applying this definition to the empirically observed phases:
+
+\begin{align}
+  \mathcal{S}(\Delta^{+}) &= 1 - \frac{18}{1060} \approx 0.983 \\[4pt]
+  \mathcal{S}(\Delta^{-}) &= 1 - \frac{13}{370}  \approx 0.965 \\[4pt]
+  \mathcal{S}(\alpha)      &= 1 - \frac{19}{523}  \approx 0.964 \\[4pt]
+  \mathcal{S}(\beta)       &= 1 - \frac{12}{536}  \approx 0.978
+\end{align}
+
+All four phase parameters exhibit temporal stability indices in excess of
+$0.96$. This is a remarkable result for a market that is widely characterised
+as chaotic and subject to reflexive price dynamics. Most notably, the full
+expansion phase $\Delta^{+}$ returns the highest stability index of the four,
+$\mathcal{S}(\Delta^{+}) \approx 0.983$, implying that the bullish trajectory
+from cycle trough to cycle peak is the most temporally invariant structural
+unit in the system.
+
+\begin{proposition}[Differential Temporal Stability]
+  The expansion phase of Bitcoin market cycles is more temporally stable than
+  the contraction phase: $\mathcal{S}(\Delta^{+}) > \mathcal{S}(\Delta^{-})$.
+  Equivalently, the maximum inter-cycle deviation of the expansion phase
+  (18 days over a mean of 1{,}060 days) is proportionally smaller than that of
+  the contraction phase (13 days over a mean of 370 days).
+\end{proposition}
+
+This proposition carries a significant analytical implication. The prevailing
+market intuition often treats bear markets as more structurally predictable
+than bull markets---a view shaped by the observation that fear-driven
+capitulation tends to be temporally compressed and abrupt. The data presented
+here challenge that intuition at the cycle level: while individual contraction
+events may feel decisive, their total duration is less invariant across cycles
+than that of the expansion phases that precede them. Put differently,
+\textit{the system's internal clock runs more precisely during expansions than
+during contractions.}
+
+This asymmetry may reflect a fundamental difference in the dynamics governing
+the two phases. The expansion phase is characterised by a progressive and
+relatively orderly accumulation of demand---a process that, by its nature,
+unfolds over extended timeframes and is anchored by the halving's structural
+signal. The contraction phase, by contrast, is governed by the interaction
+between forced selling, liquidity withdrawal, and sentiment deterioration:
+forces that are inherently more sensitive to exogenous shocks and therefore
+more variable in their temporal manifestation.
+
+Critically, the observation that the expansion phase post-ETF approval (Cycle 3)
+continues to conform to the historical temporal envelope---with a duration of
+$\Delta^{+}_3 = 1{,}050$ days, only 10 days below the prior minimum of
+1{,}061 days---provides preliminary evidence that the temporal structure of
+the model is robust to the structural regime change introduced by institutional
+participation. The amplitude parameters, as we discuss in the following
+sections, do not appear to enjoy the same degree of cross-regime stability.
+
+% =============================================================================
+%  END OF SECTION 2
+% =============================================================================

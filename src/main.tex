@@ -1,0 +1,104 @@
+% =============================================================================
+%  MAIN ACADEMIC BASE TEMPLATE — BITCOIN HARMONIC TIME MODEL
+% =============================================================================
+\documentclass[11pt,a4paper,oneside]{article}
+
+% --- Core Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+% --- Page Geometry ---
+\geometry{
+    a4paper,
+    total={160mm,247mm},
+    left=25mm,
+    top=25mm,
+}
+
+% --- SIunitx Configuration ---
+\sisetup{
+    group-separator={,},
+    group-minimum-digits=4
+}
+
+% --- Hyperref Setup ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={The Bitcoin Harmonic Time Model},
+    pdfpagemode=FullScreen,
+}
+
+% --- Mathematical Environments ---
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+% =============================================================================
+%  METADATA & TITLE CONFIGURATION
+% =============================================================================
+\title{\textbf{The Bitcoin Harmonic Time Model:\\
+Internal Phase Symmetry, Amplitude Power-Laws, and the Institutional ETF Regime Shift}}
+
+\author{\textbf{Romero Quant} \\
+\small Independent Quantitative Research \\
+\small \texttt{romero.quant@proton.me} \\
+\small \href{https://x.com/RomeroQuant}{@RomeroQuant}}
+
+\date{\small June 2026}
+
+% =============================================================================
+%  DOCUMENT BODY
+% =============================================================================
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper formalises the Bitcoin Harmonic Time Model, a two-dimensional quantitative framework that structures Bitcoin market cycles into a discrete dynamic system defined by temporal phase symmetry and compressed amplitude distributions. We demonstrate that the governing clock of the market is not the halving event in isolation, but a stable internal phase architecture where the halving acts as a temporal node, consistently arriving at normalised phase $\bar{\phi}(H) \approx 0.494$ of the expansion phase. Using historical data from three completed cycles, we establish that expansion lasts $1{,}060 \pm 12$ days and contraction $370 \pm 13$ days, yielding a mean period of $1{,}430$ days. Furthermore, we derive an empirical power-law demonstrating that cycle multipliers scale non-linearly with prior drawdown depth ($\hat{\mathcal{M}}(d) = 328 \cdot d^{5.1}$), and introduce a structural adjustment framework to account for the regime shift initiated by the launch of spot US Exchange-Traded Funds (ETFs) in 2024. Finally, we translate this unified model into explicit, dated, and falsifiable calendar hypotheses for the current and subsequent market cycles.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+% =============================================================================
+%  SECTION INTEGRATION (MODULAR INPUTS)
+% =============================================================================
+
+% 1. Section 2: Empirical Foundations
+\input{section2_empirical_data}
+
+% 2. Sections 3 & 4: Phase Formalisation and Law of Amplitude
+\input{sections3_4_amplitude}
+
+% 3. Sections 5, 6 & 7: Synthesis, Projections and Limitations
+\input{sections5_6_7_final}
+
+% =============================================================================
+%  BIBLIOGRAPHY (Failsafe Empty Setup)
+% =============================================================================
+\begin{thebibliography}{99}
+\bibitem{nakamoto2008}
+Nakamoto, S. (2008). \textit{Bitcoin: A Peer-to-Peer Electronic Cash System}. Self-published.
+\bibitem{romero2026}
+Romero Quant. (2026). \textit{The Invariance of Bitcoin's Internal Expansion Phases}. Quantitative Research Series, Vol. 1.
+\end{thebibliography}
+
+\end{document}
+% =============================================================================
+%  END OF BASE TEMPLATE
+% =============================================================================

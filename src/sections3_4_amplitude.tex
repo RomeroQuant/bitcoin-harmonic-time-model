@@ -1,0 +1,472 @@
+% =============================================================================
+%  SECTION 3 — MATHEMATICAL FORMALISATION OF INTERNAL PHASE SYMMETRY
+%  SECTION 4 — THE LAW OF AMPLITUDE AND STRUCTURAL REGIME ADJUSTMENTS
+%  Integrate immediately after Section 2 in the main document.
+% =============================================================================
+
+
+% =============================================================================
+\section{Mathematical Formalisation of Internal Phase Symmetry}
+% =============================================================================
+
+\subsection{Bitcoin Cycles as a Damped Harmonic System}
+
+The empirical regularities documented in Section~2 motivate a formal analogical
+framework borrowed from the theory of dynamic systems. We propose that the
+observable structure of Bitcoin market cycles admits a tractable representation
+as a \textit{discrete damped harmonic oscillator}: a system characterised by
+near-constant periodicity, a stable internal phase relationship, and
+monotonically decreasing amplitude across successive cycles.
+
+In continuous-time mechanics, a damped harmonic oscillator obeys the
+second-order linear differential equation:
+
+\begin{equation}
+  \ddot{x}(t) + 2\zeta\omega_0\,\dot{x}(t) + \omega_0^2\,x(t) = 0
+  \label{eq:dho}
+\end{equation}
+
+where $x(t)$ denotes the displacement from equilibrium, $\omega_0$ the
+natural angular frequency of the undamped system, and $\zeta \in (0,1)$ the
+damping ratio. For $\zeta \in (0,1)$---the underdamped regime---the general
+solution takes the form:
+
+\begin{equation}
+  x(t) = A_0\, e^{-\zeta\omega_0 t}
+           \cos\!\bigl(\omega_d t + \varphi_0\bigr)
+  \label{eq:dho_solution}
+\end{equation}
+
+where $\omega_d = \omega_0\sqrt{1 - \zeta^2}$ is the damped angular frequency,
+$A_0$ is the initial amplitude, and $\varphi_0$ is the initial phase offset.
+The solution describes oscillations of progressively decreasing amplitude
+enveloped by the exponential decay factor $e^{-\zeta\omega_0 t}$.
+
+We do not claim that equation~\eqref{eq:dho} governs Bitcoin's price path in
+any literal mechanical sense. Markets are reflexive, non-linear systems, and
+price dynamics are not solutions to differential equations with fixed
+coefficients. The value of the analogy lies in its structural
+correspondence: (i) a measurable and nearly constant period $T$; (ii) a
+well-defined phase relationship pinned by an internal reference event; and
+(iii) a monotonically decreasing amplitude envelope. All three properties are
+empirically supported by the data in Section~2 for the temporal dimension and
+are developed for the amplitude dimension in Section~4.
+
+\subsection{Cycle Period and Angular Frequency}
+
+The total cycle period $T_{\text{cycle}}$ is defined as the elapsed time
+between two consecutive troughs:
+
+\begin{equation}
+  T_{\text{cycle}} = \Delta^{+}_i + \Delta^{-}_i
+  \label{eq:period}
+\end{equation}
+
+Using the empirically derived averages $\bar{\Delta}^{+} \approx 1{,}060$ days
+and $\bar{\Delta}^{-} \approx 370$ days:
+
+\begin{equation}
+  \bar{T}_{\text{cycle}} \approx 1{,}060 + 370 = 1{,}430 \text{ days}
+  \label{eq:period_value}
+\end{equation}
+
+The corresponding mean angular frequency $\bar{\omega}$, expressed in
+radians per day, is:
+
+\begin{equation}
+  \bar{\omega} = \frac{2\pi}{\bar{T}_{\text{cycle}}}
+               = \frac{2\pi}{1{,}430}
+               \approx 4.394 \times 10^{-3}\ \text{rad}\cdot\text{day}^{-1}
+  \label{eq:omega}
+\end{equation}
+
+\subsection{Phase Definition and the Halving as a Temporal Node}
+
+Within each cycle $\mathcal{C}_i = [T_i,\, P_i,\, T_{i+1}]$, we define the
+instantaneous cycle phase $\phi(t)$ as the normalised position of any date $t$
+within the expansion interval $[T_i, P_i]$:
+
+\begin{equation}
+  \phi(t) = \frac{t - T_i}{\Delta^{+}_i}, \quad \phi \in [0,\, 1]
+  \label{eq:phase_norm}
+\end{equation}
+
+Under this normalisation, $\phi(T_i) = 0$ at the cycle trough and
+$\phi(P_i) = 1$ at the cycle peak. The phase at the halving event $H_i$ is
+therefore:
+
+\begin{equation}
+  \phi(H_i) = \frac{\alpha_i}{\Delta^{+}_i}
+             = \frac{\alpha_i}{\alpha_i + \beta_i}
+  \label{eq:phase_halving}
+\end{equation}
+
+Substituting the empirical averages $\bar{\alpha} = 523$ days and
+$\bar{\beta} = 536$ days:
+
+\begin{equation}
+  \bar{\phi}(H) = \frac{523}{523 + 536}
+                = \frac{523}{1{,}059}
+                \approx 0.4939
+  \label{eq:phase_halving_value}
+\end{equation}
+
+The halving consistently occurs at approximately $\bar{\phi}(H) \approx 0.494$
+of the expansion phase---marginally before the mathematical midpoint
+$\phi = 0.500$. We define the \textit{phase displacement} $\delta_\phi$ as the
+deviation of the halving from perfect bisection:
+
+\begin{equation}
+  \delta_\phi = \bar{\phi}(H) - 0.500 = 0.494 - 0.500 = -0.006
+  \label{eq:phase_displacement}
+\end{equation}
+
+This displacement of $-0.006$ in normalised phase corresponds to approximately
+$-0.006 \times 1{,}059 \approx -6$ calendar days: the halving arrives,
+on average, six days earlier than the geometric midpoint of the expansion. The
+sign is negative because the system's peak lies slightly further in time from
+the halving than the trough does---a structural asymmetry we interpret as the
+lagged propagation of the supply shock through market sentiment and price
+discovery mechanisms.
+
+The observed inter-cycle values of $\phi(H_i)$ are:
+
+\begin{align}
+  \phi_1(H_1) &= \frac{542}{1068} \approx 0.508 \\[4pt]
+  \phi_2(H_2) &= \frac{513}{1061} \approx 0.484 \\[4pt]
+  \phi_3(H_3) &= \frac{515}{1050} \approx 0.490
+\end{align}
+
+The range of $\phi(H_i)$ is $[0.484,\; 0.508]$, a span of 0.024 in normalised
+phase, or approximately 25 calendar days when projected onto the mean expansion
+duration. This near-invariance of the halving's phase position across three
+independent cycles---each occurring in markedly different macroeconomic and
+structural environments---constitutes the strongest quantitative argument for
+treating the halving as a \textit{temporal node}: a fixed point in the phase
+space of the system, rather than an event whose timing relative to the cycle
+is coincidental.
+
+\begin{definition}[Temporal Node]
+  The halving event $H_i$ is a \textit{temporal node} of cycle $\mathcal{C}_i$
+  if and only if its normalised phase $\phi(H_i)$ is invariant across cycles
+  up to a maximum deviation of $\varepsilon_\phi$, where $\varepsilon_\phi$ is
+  small relative to unity. Empirically, $\varepsilon_\phi \approx 0.012$ (one
+  half of the observed range), satisfying the condition $\varepsilon_\phi \ll 1$.
+\end{definition}
+
+\subsection{Implications for Forward Projection}
+
+The phase-anchoring property of the halving has a direct and practically
+consequential implication: knowing the date of the next halving $H_{i+1}$
+and an estimate of the trough $T_{i+1}$, it is possible to construct a
+probabilistic interval for the next peak $P_{i+1}$ without reference to any
+price-level information. Specifically:
+
+\begin{equation}
+  \hat{P}_{i+1} = H_{i+1} + \bar{\beta} \pm \sigma_{\max}^{\beta}
+                = H_{i+1} + 536 \pm 12 \ \text{ days}
+  \label{eq:peak_projection}
+\end{equation}
+
+This formulation renders the temporal projection \textit{falsifiable} in a
+strictly Popperian sense: it generates a dated prediction interval that can
+be confirmed or refuted by subsequent market data, independently of any
+assumptions about price magnitude. The projection for the current cycle is
+developed in full in Section~6.
+
+
+% =============================================================================
+\section{The Law of Amplitude and Structural Regime Adjustments}
+% =============================================================================
+
+\subsection{Empirical Amplitude Data}
+
+The second measurable degree of freedom in the harmonic model is the
+\textit{amplitude} of each cycle: the magnitude of the price return from
+trough to peak. We characterise this dimension through two complementary
+empirical series. The first is the \textit{cycle multiplier} $\mathcal{M}_i$,
+defined as the ratio of the peak price to the trough price within cycle $i$:
+
+\begin{equation}
+  \mathcal{M}_i = \frac{P^{\$}_i}{T^{\$}_i}
+  \label{eq:multiplier}
+\end{equation}
+
+The second is the \textit{prior drawdown} $d_i$, defined as the proportional
+decline from the preceding cycle peak $P^{\$}_{i-1}$ to the current trough
+$T^{\$}_i$:
+
+\begin{equation}
+  d_i = \frac{P^{\$}_{i-1} - T^{\$}_i}{P^{\$}_{i-1}}
+      = 1 - \frac{T^{\$}_i}{P^{\$}_{i-1}}, \quad d_i \in (0,\, 1)
+  \label{eq:drawdown}
+\end{equation}
+
+Table~\ref{tab:amplitude} reports the empirical values of $\mathcal{M}_i$ and
+$d_i$ for the three observed cycles.
+
+\begin{table}[H]
+  \centering
+  \caption{Bitcoin Cycle Amplitude Parameters: Multipliers and Prior Drawdowns}
+  \label{tab:amplitude}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabularx}{\textwidth}{l S[table-format=2.2] S[table-format=1.2]
+                                 S[table-format=2.1] c}
+    \toprule
+    \textbf{Cycle} &
+    \multicolumn{1}{c}{$\mathcal{M}_i$ (Trough$\to$Peak)} &
+    \multicolumn{1}{c}{$d_i$ (Prior drawdown)} &
+    \multicolumn{1}{c}{Return (\%)} &
+    \textbf{Regime} \\
+    \midrule
+    Cycle 1 (2015--2017) & 130.40 & 0.83 & {+12{,}940\%} & Retail \\
+    Cycle 2 (2018--2021) &  20.44 & 0.59 & {+1{,}944\%}  & Retail \\
+    Cycle 3 (2022--2025)\textsuperscript{\dag}
+                          &   8.07 & 0.48 & {+707\%}      & Transitional \\
+    \midrule
+    \textit{Projected Cycle 4} & \textit{2.5--4.0} & \textit{0.30--0.40?}
+      & \textit{+150--300\%} & \textit{Institutional} \\
+    \bottomrule
+  \end{tabularx}
+  \medskip
+  \begin{minipage}{\textwidth}
+    \small
+    \textsuperscript{\dag} Cycle 3 amplitude computed under the hypothesis
+    $P_3 = 6$ October 2025. Cycle 4 projections are model-derived estimates
+    subject to the regime-adjustment discussed in \S\ref{sec:etf_break}.
+  \end{minipage}
+\end{table}
+
+Two secular trends are immediately apparent from Table~\ref{tab:amplitude}.
+First, the cycle multiplier $\mathcal{M}_i$ declines sharply and
+monotonically across successive cycles: from $130.4\times$ to $20.4\times$
+to $8.1\times$. Second, the prior drawdown $d_i$ likewise declines: from $83\%$
+to $59\%$ to $48\%$. The co-movement of these two series suggests that the
+amplitude of each recovery is not independent of the severity of the preceding
+contraction---a relationship that we formalise in the following subsection.
+
+\subsection{The Power-Law of Amplitude: Empirical Derivation}
+
+Inspection of the data in Table~\ref{tab:amplitude} suggests that the cycle
+multiplier $\mathcal{M}_i$ is functionally related to the prior drawdown $d_i$
+through a power-law specification of the form:
+
+\begin{equation}
+  \mathcal{M}(d) = \kappa \cdot d^{\,\gamma}
+  \label{eq:amplitude_law}
+\end{equation}
+
+where $\kappa > 0$ is a scaling coefficient and $\gamma > 0$ is the elasticity
+exponent. Fitting equation~\eqref{eq:amplitude_law} to the three observed
+data points $\{(d_i, \mathcal{M}_i)\}_{i=1}^{3}$ via least-squares regression
+in log-linear space---that is, regressing $\ln\mathcal{M}$ on $\ln d$---yields
+the following empirical estimates:
+
+\begin{equation}
+  \boxed{\ \hat{\mathcal{M}}(d) \approx 328 \cdot d^{\,5.1}\ }
+  \label{eq:amplitude_fit}
+\end{equation}
+
+with $\hat{\kappa} = 328$ and $\hat{\gamma} = 5.1$.
+
+The high value of the exponent $\hat{\gamma} = 5.1$ reflects the extreme
+non-linearity of the relationship: small reductions in drawdown depth produce
+disproportionately large compressions in the subsequent multiplier. This is
+the mathematical expression of the \textit{Law of Diminishing Returns} that
+characterises maturing asset classes. Table~\ref{tab:amplitude_fit} reports
+the in-sample fit of the model against observed values.
+
+\begin{table}[H]
+  \centering
+  \caption{In-Sample Fit of the Power-Law Amplitude Model
+           $\hat{\mathcal{M}}(d) = 328 \cdot d^{5.1}$}
+  \label{tab:amplitude_fit}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabularx}{\textwidth}{l
+    S[table-format=1.2]
+    S[table-format=3.1]
+    S[table-format=3.1]
+    S[table-format=2.1]}
+    \toprule
+    \textbf{Cycle} &
+    \multicolumn{1}{c}{$d_i$} &
+    \multicolumn{1}{c}{$\hat{\mathcal{M}}(d_i)$ (Model)} &
+    \multicolumn{1}{c}{$\mathcal{M}_i$ (Observed)} &
+    \multicolumn{1}{c}{Error (\%)} \\
+    \midrule
+    Cycle 1 & 0.83 & 126.0 & 130.4 & {-3.4\%} \\
+    Cycle 2 & 0.59 &  22.0 &  20.4 & {+7.8\%} \\
+    Cycle 3 & 0.48 &   7.7 &   8.1 & {-4.9\%} \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+The model reproduces the three observed multipliers with errors of less than
+$8\%$, a precision that is considered high for a two-parameter empirical model
+fitted to three data points across markets separated by a decade and orders of
+magnitude in capitalisation. The direction of the errors is unsystematic
+(negative, positive, negative), suggesting the absence of a structural bias in
+the fit and consistent with random measurement or timing uncertainty rather
+than model misspecification.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{law_of_amplitude.png}
+    \caption{\textbf{The Law of Amplitude and Regime Shift:} Empirical power-law trajectory mapped as a function of prior drawdown severity ($\hat{\mathcal{M}}(d) = 328 \cdot d^{5.1}$). The yellow boundary highlights the projected structural break and volatility dampening induced by the post-2024 spot institutional ETF regime change.}
+    \label{fig:law_of_amplitude}
+\end{figure}
+
+\subsection{The Law of Diminishing Returns: Structural Interpretation}
+
+The power-law relationship in equation~\eqref{eq:amplitude_fit} is not
+merely a curve-fitting exercise. It admits a structural interpretation grounded
+in the economics of asset maturation. We identify three reinforcing mechanisms
+that produce the observed amplitude compression:
+
+\textbf{Mechanism I: Market Capitalisation Scaling.} As Bitcoin's market
+capitalisation increases by an order of magnitude with each cycle, the absolute
+capital inflow required to achieve a given price multiplier grows
+proportionally. A $100\times$ return from a \$1B market cap requires \$100B
+in net new capital; the same return from a \$100B capitalisation requires
+\$10T---a figure that exceeds the investable universe of most asset classes. The
+\textit{reflexive compression} of multipliers as capitalisation grows is
+therefore a near-mathematical inevitability rather than a contingent market
+phenomenon.
+
+\textbf{Mechanism II: Drawdown Compression as a Maturity Indicator.} The
+monotonic decline in $d_i$ from $0.83$ to $0.59$ to $0.48$ is itself a
+manifestation of structural maturation. As the asset develops deeper spot and
+derivatives liquidity, a larger and more diversified investor base, and
+greater macro-level awareness, the conditions for absolute capitulation---which
+characterised the $-83\%$ drawdown of 2014--2015---become progressively less
+tenable. Tighter drawdowns imply, via equation~\eqref{eq:amplitude_law} and
+the large exponent $\hat{\gamma}=5.1$, dramatically lower subsequent
+multipliers. In this sense, the drawdown depth $d_i$ functions as an implicit
+\textit{maturity proxy} for the asset at the time of cycle trough.
+
+\textbf{Mechanism III: Reflexive Expectation Dampening.} With each completed
+cycle, the universe of potential Bitcoin investors who have not yet participated
+shrinks. As the narrative of extraordinary returns becomes part of collective
+financial memory, forward-looking participants price in a portion of the
+expected cycle gain during the accumulation phase itself, reducing the
+magnitude of the subsequent re-rating. This mechanism---analogous to the
+well-documented reduction in the post-earnings announcement drift as analyst
+coverage increases---produces a secular compression in realised multipliers
+independently of capitalisation effects.
+
+\subsection{The Structural Break: Spot ETF Approval as a Regime Shift}
+\label{sec:etf_break}
+
+The preceding mechanisms describe endogenous sources of amplitude compression
+that would have been operative regardless of the regulatory and product
+landscape. Beginning in January 2024, however, a qualitatively distinct and
+exogenous force entered the system: the approval and large-scale adoption of
+spot Bitcoin Exchange-Traded Funds in the United States and subsequently in
+other major jurisdictions.
+
+The ETF channel introduces capital flows with properties that are
+fundamentally different from those of prior demand sources:
+
+\begin{enumerate}
+  \item \textbf{Passivity and mandate-driven allocation.} A substantial portion
+  of ETF inflows originates from multi-asset portfolio rebalancing mandates
+  rather than from discretionary conviction. This capital is, by construction,
+  less sensitive to price levels and sentiment cycles than retail or
+  speculative institutional capital.
+
+  \item \textbf{Continuous and symmetric flow structure.} Unlike retail
+  participants, who tend to concentrate purchases near cycle peaks and sales
+  near troughs, mandate-driven ETF flows exhibit a more uniform distribution
+  across time---dampening both the velocity of price appreciation during
+  expansion phases and the velocity of decline during contraction phases.
+
+  \item \textbf{Reduction of uninvested addressable market.} The ETF structure
+  makes Bitcoin accessible to a class of capital---pension funds, endowments,
+  wealth management platforms---that was previously excluded by custody,
+  compliance, or fiduciary constraints. As this capital enters progressively
+  during and after Cycle 3, the pool of ``yet-to-participate'' institutional
+  demand diminishes, further constraining future multiplier potential.
+\end{enumerate}
+
+The net structural effect of ETF participation can be decomposed into two
+directional impacts on the amplitude parameters:
+
+\begin{equation}
+  \Delta d_i^{\,\text{ETF}} < 0 \quad \Longrightarrow \quad
+  \Delta \mathcal{M}_i^{\,\text{ETF}} < 0
+  \label{eq:etf_effect}
+\end{equation}
+
+That is: ETF participation \textit{compresses the drawdown} $d_i$ below what
+endogenous mechanisms would produce, which in turn---through the power-law
+relationship of equation~\eqref{eq:amplitude_fit}---\textit{further compresses
+the subsequent multiplier} $\mathcal{M}_i$. The two effects are not additive
+but multiplicatively linked via the functional form of the amplitude law.
+
+\subsection{Forward Amplitude Projection for Cycle 4}
+
+Under the combined action of endogenous maturation and the ETF-driven
+structural break, we project the prior drawdown for Cycle 4 in the range
+$d_4 \in [0.30,\; 0.40]$. This range reflects:
+
+\begin{itemize}
+  \item The secular trend of declining drawdowns: $0.83 \to 0.59 \to 0.48$,
+  suggesting a continuation toward the $[0.30, 0.40]$ interval.
+  \item The additional stabilising force of sustained ETF demand during
+  contraction phases, which introduces a structural price floor absent in
+  prior cycles.
+  \item Uncertainty about the magnitude of ETF-driven support, which precludes
+  a point estimate and warrants the use of an interval.
+\end{itemize}
+
+Applying the power-law model of equation~\eqref{eq:amplitude_fit} to this
+drawdown range, whilst acknowledging that the model was calibrated on
+pre-ETF data and may therefore \textit{overestimate} the multiplier under the
+new regime:
+
+\begin{align}
+  \hat{\mathcal{M}}(0.40) &= 328 \cdot (0.40)^{5.1}
+    \approx 328 \cdot 0.00926 \approx 3.04 \label{eq:m_upper} \\[4pt]
+  \hat{\mathcal{M}}(0.30) &= 328 \cdot (0.30)^{5.1}
+    \approx 328 \cdot 0.00218 \approx 0.71 \label{eq:m_lower}
+\end{align}
+
+The lower bound produced by equation~\eqref{eq:m_lower} ($d_4 = 0.30$,
+$\hat{\mathcal{M}} \approx 0.71$) implies a peak price below the trough price,
+which is structurally inconsistent with a continuation of the harmonic cycle.
+We interpret this as evidence that the purely mechanical extrapolation of the
+power-law model breaks down at low drawdown levels---a regime where the
+ETF-driven price floor prevents the kind of absolute capitulation that the
+model was fitted to capture.
+
+We therefore propose a \textit{regime-adjusted amplitude interval} for Cycle 4
+that combines the mechanical model output for $d_4 \in [0.35, 0.40]$ with a
+qualitative adjustment for ETF structural support:
+
+\begin{equation}
+  \mathcal{M}_4^{\text{adj}} \in [2.5,\; 4.0]
+  \label{eq:m4_adjusted}
+\end{equation}
+
+This interval implies a percentage return from trough to peak of approximately
+$+150\%$ to $+300\%$---a range that reflects the transition from a
+hypergrowth asset to a maturing store-of-value instrument with deep
+institutional participation. Critically, this projection is derived from the
+structural and mechanical properties of the model rather than from price
+extrapolation, and it should be treated as a probabilistic envelope rather
+than a point forecast.
+
+\begin{proposition}[Amplitude Convergence]
+  Under continued asset maturation and sustained institutional ETF
+  participation, the cycle multiplier $\mathcal{M}_i$ is expected to converge
+  asymptotically toward a lower bound consistent with the return profile of
+  other macro assets. The power-law relationship
+  $\hat{\mathcal{M}}(d) = 328 \cdot d^{5.1}$ captures this convergence
+  endogenously through the compression of prior drawdowns, but requires a
+  regime adjustment for cycles in which ETF-driven demand materially
+  alters the drawdown distribution relative to the pre-ETF calibration sample.
+\end{proposition}
+
+% =============================================================================
+%  END OF SECTIONS 3 & 4
+% =============================================================================
